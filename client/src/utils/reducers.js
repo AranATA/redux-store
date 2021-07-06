@@ -1,4 +1,3 @@
-import { useReducer } from "react";
 import {
   UPDATE_PRODUCTS,
   ADD_TO_CART,
@@ -11,7 +10,19 @@ import {
   TOGGLE_CART
 } from "./actions";
 
-export const reducer = (state, action) => {
+// The "initial state object" is placed into the reducers.js from GlobalState.js which used to define the "context".
+
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: '',
+}
+
+// and is passed into the reducer function
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_PRODUCTS:
       return {
@@ -85,6 +96,8 @@ export const reducer = (state, action) => {
   }
 };
 
-export default function useProductReducer(initialState) {
-  return useReducer(reducer, initialState)
-}
+// This code no longer required 
+
+// export default function useProductReducer(initialState) {
+//   return useReducer(reducer, initialState)
+// }
